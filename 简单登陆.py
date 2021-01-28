@@ -1,6 +1,6 @@
 #!/usr/bin.python3
 import sys
-dic1 = {'wudanyangggo':'shenjing41','wudanyangshiwo':'shengjing@41'}
+dic1 = {}
 def new_user():
     while 1 :
             number = str(input("请输入账号："))

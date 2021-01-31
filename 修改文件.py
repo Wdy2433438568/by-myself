@@ -17,9 +17,9 @@ if text != file_after:
             file_after2.close()
     if choice == '另立为':
         another_file = g.filesavebox(default='*.txt')
-        f1 = open(another_file,'w')
-        f1.write(file_after)
-        f1.close()
+        with open(another_file,'w') as f1:
+            f1.write(file_after)
+            f1.close()
         if os.path.splitext(another_file)[1] != '.txt':
             os.path.basename += '.txt'
     

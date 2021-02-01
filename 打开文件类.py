@@ -8,9 +8,10 @@ class Openfile:
         with open(g.fileopenbox(default='*.txt')) as f1:
             a = f1.read()
             g.textbox(text=a,msg='文件内容如下',title='')
-            f1.close() 
+           
     
     def __del__(self):
+        f1.close() 
         g.msgbox('我关闭啦！','关闭')
 
 

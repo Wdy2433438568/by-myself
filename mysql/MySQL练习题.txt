@@ -142,3 +142,38 @@ select student_id from score where num<60) having count(sname)>=2;
 查询选修了所有课程的学生姓名：select sname from score inner join student on student_id=student.sid
 group by student_id
 having count(course_id) in (select count(cname) from course);
+
+查询李平老师教的课程的所有成绩记录：select num,t1.cname from score inner join 
+(select cid,cname,tname from teacher inner join course on tid = teacher_id where tname like '李平%') as t1
+on course_id=cid;
+
+查询每门课程被选修的次数：select cname,t1.count_a from course inner join 
+(select course_id,count(course_id)as count_a from score group by course_id)as t1 on course_id=cid ;
+
+查询之选修了一门课程的学生姓名和学号：select sname,sid from student inner join
+(select student_id from score group by student_id having count(course_id)=1) as t1
+on sid=student_id;
+
+查询所有学生考出的成绩并按从高到低排序（成绩去重）：select sname,t1.num from student inner join
+(select distinct student_id,num from score order by num desc)as t1
+on student_id = sid;
+
+查询平均成绩大于85的学生姓名和平均成绩：select sname,t1.avg_1 from student inner join
+(select student_id,avg(num)as avg_1 from score group by student_id having avg(num)>85)as t1
+on student_id=sid;
+
+查询生物成绩不及格的学生姓名和对应生物分数：select sname,t2.num from student inner join 
+(select student_id,num from score inner join 
+(select cid,cname from course where cname='生物')as t1 on course_id = cid where num<60)as t2
+on student_id=sid;
+
+查询在所有选修了李平老师课程的学生中，这些课程(李平老师的课程，不是所有课程)平均成绩最高的学生姓名：select sname,avg_num from student inner join
+(select student_id,avg(num) as avg_num from score inner join 
+(select cid,cname,tname from teacher inner join course on tid = teacher_id where tname like '李平%') as t1
+on course_id=cid group by student_id order by avg(num) desc limit 1)as t2 on student_id=sid;
+
+查询每门课程成绩最好的学生姓名：select sname from student inner join 
+(select student_id,max(num) as max_num,course_id from score group by course_id)as t1
+on student_id=sid ;
+
+

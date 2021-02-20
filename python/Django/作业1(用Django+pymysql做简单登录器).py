@@ -47,9 +47,9 @@ def login(request):
             return render(request,'login.html',{'error':'用户名或密码错误'}) #登陆失败
 
 def index(request):
-    return render(request,'index.html',{'name':'alex','user':['吴丹阳','nmsl'],'user_dict':{'k1':'wdy','k2':'lsp'},'userlistdict':[{'id':'1','name':'wdy','email':'2433438568@qq.com'},
-                                                                                                                                {'id':'2','name':'wdy2','email':'2433438578@qq.com'},
-                                                                                                                                {'id':'3','name':'wdy3','email':'1433438568@qq.com'},]})
+    return render(request,'index.html',{'name':'alex','userlistdict':[{'id':'1','name':'wdy','email':'2433438568@qq.com'},
+                                                                     {'id':'2','name':'wdy2','email':'2433438578@qq.com'},
+                                                                     {'id':'3','name':'wdy3','email':'1433438568@qq.com'},]})
 
 urlpatterns = [
     #path('admin/', admin.site.urls),

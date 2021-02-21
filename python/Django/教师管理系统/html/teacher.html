@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>teacher</title>
+</head>
+<body>
+<h1>老师资料</h1>
+<div>
+    <a href="/add_t/">添加</a>
+</div>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>姓名</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for i in user %}
+        <tr>
+        <td>{{ i.id }}</td>
+        <td>{{ i.name }}</td>
+        <td>
+            <a href="/del_t/?nid={{ i.id }}">删除</a>
+            |
+            <a href="/edit_t/?nid={{ i.id }}">编辑</a>
+        </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+</body>
+</html>

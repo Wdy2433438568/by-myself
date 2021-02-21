@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>edit_teacher</title>
+</head>
+<body>
+<h1>编辑老师</h1>
+<form method="post" action="/edit_t/?nid={{ result.id }}">
+<p>老师名称:<input type="text" name="title" value="{{ result.name }}" ></p>
+    <input type="submit" value="提交">
+</form>
+</body>
+</html>

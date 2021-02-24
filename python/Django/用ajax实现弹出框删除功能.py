@@ -1,4 +1,4 @@
-ajax:    function get_del_id() {
+js:    function get_del_id() {
         var nid=$('#editid').val();
         $.ajax({
             url:'/edit_class_cancle/',
